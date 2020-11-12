@@ -7,8 +7,13 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+
+import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 
 @Entity(name = "AUDIT_LOG")
+@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 public class AuditEntity {
 
 	@Id
@@ -20,8 +25,8 @@ public class AuditEntity {
 	@Column(name = "customer_Number")
 	private String customerNumber;
 
-	@Lob
-	@Column(name = "payload", length = 100000)
+	@Type(type = "jsonb")
+	@Column(columnDefinition = "jsonb")
 	private String payload;
 
 	public String getId() {

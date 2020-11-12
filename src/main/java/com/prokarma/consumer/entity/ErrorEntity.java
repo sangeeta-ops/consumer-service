@@ -7,8 +7,13 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+
+import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 
 @Entity(name = "ERROR_LOG")
+@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 public class ErrorEntity {
 
 	@Id
@@ -20,12 +25,12 @@ public class ErrorEntity {
 	@Column(name = "error_type")
 	private String errorType;
 
-	@Lob
-	@Column(name = "error_description")
+	@Type(type = "jsonb")
+	@Column(columnDefinition = "jsonb", name = "error_description")
 	private String errorDescription;
 
-	@Lob
-	@Column(name = "payload")
+	@Type(type = "jsonb")
+	@Column(columnDefinition = "jsonb")
 	private String payload;
 
 	public String getId() {

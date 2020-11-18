@@ -1,4 +1,4 @@
-package com.prokarma.consumer.service;
+package com.prokarma.subscriber.service;
 
 import java.io.IOException;
 
@@ -9,12 +9,12 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.prokarma.consumer.entity.AuditEntity;
-import com.prokarma.consumer.entity.ErrorEntity;
-import com.prokarma.consumer.masking.CustomerDataMaskingUtil;
-import com.prokarma.consumer.model.MessageRequest;
-import com.prokarma.consumer.repository.AuditDataRepository;
-import com.prokarma.consumer.repository.ErrorDataRepository;
+import com.prokarma.subscriber.entity.AuditEntity;
+import com.prokarma.subscriber.entity.ErrorEntity;
+import com.prokarma.subscriber.masking.CustomerDataMaskingUtil;
+import com.prokarma.subscriber.model.MessageRequest;
+import com.prokarma.subscriber.repository.AuditDataRepository;
+import com.prokarma.subscriber.repository.ErrorDataRepository;
 
 @Service
 public class DefaultSubscriberService implements SubscriberService {

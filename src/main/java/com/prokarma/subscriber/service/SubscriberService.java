@@ -1,4 +1,4 @@
-package com.prokarma.consumer.service;
+package com.prokarma.subscriber.service;
 
 public interface SubscriberService {
 

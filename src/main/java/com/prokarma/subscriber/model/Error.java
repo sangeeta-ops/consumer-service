@@ -1,4 +1,4 @@
-package com.prokarma.consumer.model;
+package com.prokarma.subscriber.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;

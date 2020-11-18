@@ -1,8 +1,7 @@
-package com.prokarma.consumer.repository;
+package com.prokarma.subscriber.repository;
 
 import org.springframework.data.repository.CrudRepository;
-
-import com.prokarma.consumer.entity.AuditEntity;
+import com.prokarma.subscriber.entity.AuditEntity;
 
 public interface AuditDataRepository extends CrudRepository<AuditEntity, String> {
 

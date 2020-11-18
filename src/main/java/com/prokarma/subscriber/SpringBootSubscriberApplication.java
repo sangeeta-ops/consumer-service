@@ -1,4 +1,4 @@
-package com.prokarma.consumer;
+package com.prokarma.subscriber;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.prokarma.consumer.util;
+package com.prokarma.subscriber.util;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;

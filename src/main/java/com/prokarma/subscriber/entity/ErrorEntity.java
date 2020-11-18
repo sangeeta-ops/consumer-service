@@ -1,4 +1,4 @@
-package com.prokarma.consumer.entity;
+package com.prokarma.subscriber.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

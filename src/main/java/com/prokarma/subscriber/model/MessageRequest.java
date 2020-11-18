@@ -1,12 +1,11 @@
-package com.prokarma.consumer.model;
+package com.prokarma.subscriber.model;
 
 import java.time.LocalDate;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.prokarma.consumer.util.CustomerStatusEnum;
-
+import com.prokarma.subscriber.util.CustomerStatusEnum;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;

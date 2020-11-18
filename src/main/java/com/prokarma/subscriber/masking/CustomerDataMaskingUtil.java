@@ -1,8 +1,7 @@
-package com.prokarma.consumer.masking;
+package com.prokarma.subscriber.masking;
 
 import org.springframework.beans.BeanUtils;
-
-import com.prokarma.consumer.model.MessageRequest;
+import com.prokarma.subscriber.model.MessageRequest;
 
 public class CustomerDataMaskingUtil {
 

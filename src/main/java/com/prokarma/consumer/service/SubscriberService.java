@@ -1,6 +1,6 @@
 package com.prokarma.consumer.service;
 
-public interface kafkaConsumerService {
+public interface SubscriberService {
 
 	public void consume(String messageRequestString);
 

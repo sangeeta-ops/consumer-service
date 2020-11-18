@@ -11,15 +11,15 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.prokarma.consumer.entity.AuditEntity;
 import com.prokarma.consumer.entity.ErrorEntity;
-import com.prokarma.consumer.masking.CustomerDataMasking;
+import com.prokarma.consumer.masking.CustomerDataMaskingUtil;
 import com.prokarma.consumer.model.MessageRequest;
 import com.prokarma.consumer.repository.AuditDataRepository;
 import com.prokarma.consumer.repository.ErrorDataRepository;
 
 @Service
-public class DefaultKafkaConsumerService implements kafkaConsumerService {
+public class DefaultSubscriberService implements SubscriberService {
 
-	private static final Logger logger = LoggerFactory.getLogger(DefaultKafkaConsumerService.class);
+	private static final Logger logger = LoggerFactory.getLogger(DefaultSubscriberService.class);
 
 	@Autowired
 	private AuditDataRepository auditDataRepository;
@@ -34,10 +34,10 @@ public class DefaultKafkaConsumerService implements kafkaConsumerService {
 		MessageRequest messageRequest = null;
 		try {
 			messageRequest = objectMapper.readValue(messageRequestString, MessageRequest.class);
+			logger.info("Started to consume messageRequest : {} ", messageRequest);
 			AuditEntity auditEntity = buildAuditEntity(messageRequestString, messageRequest);
 			auditDataRepository.save(auditEntity);
-			messageRequest = CustomerDataMasking.maskCustomerData(messageRequest);
-			logger.info("Start to consume messageRequest : {} ", messageRequest);
+			messageRequest = CustomerDataMaskingUtil.maskCustomerData(messageRequest);
 			logger.info("Finished to consume messageRequest : {} ", messageRequest);
 		} catch (Exception e) {
 			ErrorEntity errorEntity = buildErrorEntity(messageRequestString, e);

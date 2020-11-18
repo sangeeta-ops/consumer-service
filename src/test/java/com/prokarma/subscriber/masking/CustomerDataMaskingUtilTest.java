@@ -1,4 +1,4 @@
-package com.prokarma.producer.masking;
+package com.prokarma.subscriber.masking;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
-import com.prokarma.subscriber.masking.CustomerDataMaskingUtil;
 import com.prokarma.subscriber.model.Address;
 import com.prokarma.subscriber.model.MessageRequest;
 import com.prokarma.subscriber.util.CustomerStatusEnum;

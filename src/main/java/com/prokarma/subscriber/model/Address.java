@@ -16,7 +16,7 @@ public class Address {
     @JsonProperty("addressLine1")
     private String addressLine1 = null;
 
-    @JsonProperty("addressLine2 ")
+    @JsonProperty("addressLine2")
     private String addressLine2 = null;
 
     @JsonProperty("street")

@@ -10,7 +10,6 @@ import com.prokarma.subscriber.entity.ErrorEntity;
 import com.prokarma.subscriber.repository.ErrorDataRepository;
 
 @Aspect
-
 @Component
 public class DefaultSubscriberAspect {
 

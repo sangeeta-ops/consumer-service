@@ -7,7 +7,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.prokarma.subscriber.converter.MessageRequestConverter;
+import com.prokarma.subscriber.converter.DefaultMessageRequestMaskConverter;
 import com.prokarma.subscriber.entity.AuditEntity;
 import com.prokarma.subscriber.model.MessageRequest;
 import com.prokarma.subscriber.repository.AuditDataRepository;
@@ -21,7 +21,7 @@ public class DefaultConsumerService implements ConsumerService {
     private AuditDataRepository auditDataRepository;
 
     @Autowired
-    private MessageRequestConverter messageRequestConverter;
+    private DefaultMessageRequestMaskConverter messageRequestConverter;
 
     @Override
     @KafkaListener(topics = "${cloudkarafka.topic}")
@@ -30,7 +30,7 @@ public class DefaultConsumerService implements ConsumerService {
         objectMapper.registerModule(new JavaTimeModule());
         MessageRequest messageRequest =
                 objectMapper.readValue(messageRequestString, MessageRequest.class);
-        MessageRequest maskMessageRequest = messageRequestConverter.maskConversion(messageRequest);
+        MessageRequest maskMessageRequest = messageRequestConverter.convert(messageRequest);
         logger.info("Started to consume messageRequest : {} ", maskMessageRequest);
         AuditEntity auditEntity = buildAuditEntity(messageRequestString, messageRequest);
         auditDataRepository.save(auditEntity);

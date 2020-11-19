@@ -3,12 +3,15 @@ package com.prokarma.subscriber.service;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import com.fasterxml.jackson.core.JsonParseException;
+import com.prokarma.subscriber.converter.DefaultMessageRequestMaskConverter;
 import com.prokarma.subscriber.repository.AuditDataRepository;
 
 
@@ -20,6 +23,14 @@ public class DefaultConsumerServiceTest {
 
     @Mock
     private AuditDataRepository auditDataRepository;
+
+    @Mock
+    private DefaultMessageRequestMaskConverter messageRequestMaskConverter;
+
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
+    }
 
     @Test
     void testConsumeServiceWithSuccess() throws Exception {

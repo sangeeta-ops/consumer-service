@@ -25,7 +25,8 @@ public class DefaultSubscriberAspect {
     public void logError(Exception ex, String messageRequestString) {
         ErrorEntity errorEntity = buildErrorEntity(messageRequestString, ex);
         errorDataRepository.save(errorEntity);
-        logger.info("Finished to consume messageRequest : {} ", messageRequestString);
+        logger.info("Error occure in consume service and messageRequest : {} ",
+                messageRequestString);
     }
 
     private ErrorEntity buildErrorEntity(String messageRequestString, Exception e) {

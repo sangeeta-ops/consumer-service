@@ -1,6 +1,5 @@
 package com.prokarma.subscriber.model;
 
-import java.time.LocalDate;
 import java.util.Objects;
 import javax.validation.Valid;
 import javax.validation.constraints.Size;
@@ -28,7 +27,7 @@ public class MessageRequest {
 
     @JsonProperty("birthDate")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-    private LocalDate birthDate = null;
+    private String birthDate = null;
 
     @JsonProperty("country")
     private String country = null;
@@ -108,7 +107,7 @@ public class MessageRequest {
         this.lastName = lastName;
     }
 
-    public MessageRequest birthDate(LocalDate birthDate) {
+    public MessageRequest birthDate(String birthDate) {
         this.birthDate = birthDate;
         return this;
     }
@@ -121,11 +120,11 @@ public class MessageRequest {
 
     @Valid
 
-    public LocalDate getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 

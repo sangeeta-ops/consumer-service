@@ -1,64 +1,28 @@
 package com.prokarma.subscriber.model;
 
-import java.util.Objects;
-import javax.validation.Valid;
-import javax.validation.constraints.Size;
-import org.springframework.validation.annotation.Validated;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.prokarma.subscriber.util.CustomerStatusEnum;
 
-/**
- * MessageRequest
- */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen",
-        date = "2020-11-05T04:14:20.333Z")
-
 public class MessageRequest {
-    @JsonProperty("customerNumber")
-    private String customerNumber = null;
+    private String customerNumber;
 
-    @JsonProperty("firstName")
-    private String firstName = null;
+    private String firstName;
 
-    @JsonProperty("lastName")
-    private String lastName = null;
+    private String lastName;
 
-    @JsonProperty("birthDate")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-    private String birthDate = null;
+    private String birthDate;
 
-    @JsonProperty("country")
-    private String country = null;
+    private String country;
 
-    @JsonProperty("countryCode")
-    private String countryCode = null;
+    private String countryCode;
 
-    @JsonProperty("mobileNumber")
-    private String mobileNumber = null;
+    private String mobileNumber;
 
-    @JsonProperty("email")
-    private String email = null;
+    private String email;
 
-    @JsonProperty("customerStatus")
-    private CustomerStatusEnum customerStatus = null;
+    private CustomerStatusEnum customerStatus;
 
-    @JsonProperty("address")
-    private Address address = null;
+    private Address address;
 
-    public MessageRequest customerNumber(String customerNumber) {
-        this.customerNumber = customerNumber;
-        return this;
-    }
-
-    /**
-     * The is unique customer number
-     * 
-     * @return customerNumber
-     **/
-
-    @Size(max = 10)
     public String getCustomerNumber() {
         return customerNumber;
     }
@@ -67,18 +31,6 @@ public class MessageRequest {
         this.customerNumber = customerNumber;
     }
 
-    public MessageRequest firstName(String firstName) {
-        this.firstName = firstName;
-        return this;
-    }
-
-    /**
-     * User's first name
-     * 
-     * @return firstName
-     **/
-
-    @Size(min = 10, max = 50)
     public String getFirstName() {
         return firstName;
     }
@@ -87,18 +39,6 @@ public class MessageRequest {
         this.firstName = firstName;
     }
 
-    public MessageRequest lastName(String lastName) {
-        this.lastName = lastName;
-        return this;
-    }
-
-    /**
-     * User's last name
-     * 
-     * @return lastName
-     **/
-
-    @Size(min = 10, max = 50)
     public String getLastName() {
         return lastName;
     }
@@ -106,19 +46,6 @@ public class MessageRequest {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
-    public MessageRequest birthDate(String birthDate) {
-        this.birthDate = birthDate;
-        return this;
-    }
-
-    /**
-     * User's birth date
-     * 
-     * @return birthDate
-     **/
-
-    @Valid
 
     public String getBirthDate() {
         return birthDate;
@@ -128,17 +55,6 @@ public class MessageRequest {
         this.birthDate = birthDate;
     }
 
-    public MessageRequest country(String country) {
-        this.country = country;
-        return this;
-    }
-
-    /**
-     * User's country
-     * 
-     * @return country
-     **/
-
     public String getCountry() {
         return country;
     }
@@ -147,17 +63,6 @@ public class MessageRequest {
         this.country = country;
     }
 
-    public MessageRequest countryCode(String countryCode) {
-        this.countryCode = countryCode;
-        return this;
-    }
-
-    /**
-     * User's country
-     * 
-     * @return countryCode
-     **/
-    @Size(max = 2)
     public String getCountryCode() {
         return countryCode;
     }
@@ -165,17 +70,6 @@ public class MessageRequest {
     public void setCountryCode(String countryCode) {
         this.countryCode = countryCode;
     }
-
-    public MessageRequest mobileNumber(String mobileNumber) {
-        this.mobileNumber = mobileNumber;
-        return this;
-    }
-
-    /**
-     * User's mobile Number
-     * 
-     * @return mobileNumber
-     **/
 
     public String getMobileNumber() {
         return mobileNumber;
@@ -185,18 +79,6 @@ public class MessageRequest {
         this.mobileNumber = mobileNumber;
     }
 
-    public MessageRequest email(String email) {
-        this.email = email;
-        return this;
-    }
-
-    /**
-     * User's email
-     * 
-     * @return email
-     **/
-
-    @Size(max = 50)
     public String getEmail() {
         return email;
     }
@@ -205,18 +87,6 @@ public class MessageRequest {
         this.email = email;
     }
 
-    public MessageRequest customerStatus(CustomerStatusEnum customerStatus) {
-        this.customerStatus = customerStatus;
-        return this;
-    }
-
-    /**
-     * Customer Status
-     * 
-     * @return customerStatus
-     **/
-
-    @Size(max = 50)
     public CustomerStatusEnum getCustomerStatus() {
         return customerStatus;
     }
@@ -225,17 +95,6 @@ public class MessageRequest {
         this.customerStatus = customerStatus;
     }
 
-    public MessageRequest address(Address address) {
-        this.address = address;
-        return this;
-    }
-
-    /**
-     * Get address
-     * 
-     * @return address
-     **/
-    @Valid
     public Address getAddress() {
         return address;
     }
@@ -245,59 +104,88 @@ public class MessageRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        MessageRequest messageRequest = (MessageRequest) o;
-        return Objects.equals(this.customerNumber, messageRequest.customerNumber)
-                && Objects.equals(this.firstName, messageRequest.firstName)
-                && Objects.equals(this.lastName, messageRequest.lastName)
-                && Objects.equals(this.birthDate, messageRequest.birthDate)
-                && Objects.equals(this.country, messageRequest.country)
-                && Objects.equals(this.countryCode, messageRequest.countryCode)
-                && Objects.equals(this.mobileNumber, messageRequest.mobileNumber)
-                && Objects.equals(this.email, messageRequest.email)
-                && Objects.equals(this.customerStatus, messageRequest.customerStatus)
-                && Objects.equals(this.address, messageRequest.address);
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((address == null) ? 0 : address.hashCode());
+        result = prime * result + ((birthDate == null) ? 0 : birthDate.hashCode());
+        result = prime * result + ((country == null) ? 0 : country.hashCode());
+        result = prime * result + ((countryCode == null) ? 0 : countryCode.hashCode());
+        result = prime * result + ((customerNumber == null) ? 0 : customerNumber.hashCode());
+        result = prime * result + ((customerStatus == null) ? 0 : customerStatus.hashCode());
+        result = prime * result + ((email == null) ? 0 : email.hashCode());
+        result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+        result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+        result = prime * result + ((mobileNumber == null) ? 0 : mobileNumber.hashCode());
+        return result;
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(customerNumber, firstName, lastName, birthDate, country, countryCode,
-                mobileNumber, email, customerStatus, address);
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        MessageRequest other = (MessageRequest) obj;
+        if (address == null) {
+            if (other.address != null)
+                return false;
+        } else if (!address.equals(other.address))
+            return false;
+        if (birthDate == null) {
+            if (other.birthDate != null)
+                return false;
+        } else if (!birthDate.equals(other.birthDate))
+            return false;
+        if (country == null) {
+            if (other.country != null)
+                return false;
+        } else if (!country.equals(other.country))
+            return false;
+        if (countryCode == null) {
+            if (other.countryCode != null)
+                return false;
+        } else if (!countryCode.equals(other.countryCode))
+            return false;
+        if (customerNumber == null) {
+            if (other.customerNumber != null)
+                return false;
+        } else if (!customerNumber.equals(other.customerNumber))
+            return false;
+        if (customerStatus != other.customerStatus)
+            return false;
+        if (email == null) {
+            if (other.email != null)
+                return false;
+        } else if (!email.equals(other.email))
+            return false;
+        if (firstName == null) {
+            if (other.firstName != null)
+                return false;
+        } else if (!firstName.equals(other.firstName))
+            return false;
+        if (lastName == null) {
+            if (other.lastName != null)
+                return false;
+        } else if (!lastName.equals(other.lastName))
+            return false;
+        if (mobileNumber == null) {
+            if (other.mobileNumber != null)
+                return false;
+        } else if (!mobileNumber.equals(other.mobileNumber))
+            return false;
+        return true;
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class MessageRequest {\n");
-
-        sb.append("    customerNumber: ").append(toIndentedString(customerNumber)).append("\n");
-        sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
-        sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
-        sb.append("    birthDate: ").append(toIndentedString(birthDate)).append("\n");
-        sb.append("    country: ").append(toIndentedString(country)).append("\n");
-        sb.append("    countryCode: ").append(toIndentedString(countryCode)).append("\n");
-        sb.append("    mobileNumber: ").append(toIndentedString(mobileNumber)).append("\n");
-        sb.append("    email: ").append(toIndentedString(email)).append("\n");
-        sb.append("    customerStatus: ").append(toIndentedString(customerStatus)).append("\n");
-        sb.append("    address: ").append(toIndentedString(address)).append("\n");
-        sb.append("}");
-        return sb.toString();
+        return "MessageRequest [customerNumber=" + customerNumber + ", firstName=" + firstName
+                + ", lastName=" + lastName + ", birthDate=" + birthDate + ", country=" + country
+                + ", countryCode=" + countryCode + ", mobileNumber=" + mobileNumber + ", email="
+                + email + ", customerStatus=" + customerStatus + ", address=" + address + "]";
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces (except the first
-     * line).
-     */
-    private String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+
 }

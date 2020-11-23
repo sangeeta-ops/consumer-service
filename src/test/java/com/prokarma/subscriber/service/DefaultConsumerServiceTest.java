@@ -16,7 +16,7 @@ import com.prokarma.subscriber.repository.AuditDataRepository;
 
 
 @ExtendWith(MockitoExtension.class)
-public class DefaultConsumerServiceTest {
+class DefaultConsumerServiceTest {
 
     @InjectMocks
     private DefaultConsumerService defaultConsumerService;

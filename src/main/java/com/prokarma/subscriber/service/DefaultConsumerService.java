@@ -5,12 +5,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.prokarma.subscriber.converter.DefaultMessageRequestMaskConverter;
-import com.prokarma.subscriber.entity.AuditEntity;
+import com.prokarma.subscriber.entity.Audit;
 import com.prokarma.subscriber.model.MessageRequest;
 import com.prokarma.subscriber.repository.AuditDataRepository;
+import com.prokarma.subscriber.util.ObjectMapperUtil;
 
 @Service
 public class DefaultConsumerService implements ConsumerService {
@@ -26,22 +25,20 @@ public class DefaultConsumerService implements ConsumerService {
     @Override
     @KafkaListener(topics = "${cloudkarafka.topic}")
     public void consumeService(String messageRequestString) throws Exception {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.registerModule(new JavaTimeModule());
         MessageRequest messageRequest =
-                objectMapper.readValue(messageRequestString, MessageRequest.class);
+                ObjectMapperUtil.returnObjectFromJsonString(messageRequestString);
         MessageRequest maskMessageRequest = messageRequestConverter.convert(messageRequest);
         logger.info("Started to consume messageRequest : {} ", maskMessageRequest);
-        AuditEntity auditEntity = buildAuditEntity(messageRequestString, messageRequest);
+        Audit auditEntity = buildAuditEntity(messageRequestString, messageRequest);
         auditDataRepository.save(auditEntity);
         logger.info("Finished to consume messageRequest : {} ", maskMessageRequest);
 
     }
 
 
-    private AuditEntity buildAuditEntity(String messageRequestString,
+    private Audit buildAuditEntity(String messageRequestString,
             MessageRequest messageRequest) {
-        AuditEntity auditEntity = new AuditEntity();
+        Audit auditEntity = new Audit();
         auditEntity.setCustomerNumber(messageRequest.getCustomerNumber());
         auditEntity.setPayload(messageRequestString);
         return auditEntity;

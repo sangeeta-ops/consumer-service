@@ -10,7 +10,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import com.fasterxml.jackson.core.JsonParseException;
 import com.prokarma.subscriber.converter.DefaultMessageRequestMaskConverter;
 import com.prokarma.subscriber.repository.AuditDataRepository;
 
@@ -41,9 +40,9 @@ class DefaultConsumerServiceTest {
     @Test
     void testConsumeServiceWithErrorResponse() throws Exception {
         String messageRequestString = buildMessageRequestStringForErrorResponse();
-        Throwable exception = assertThrows(JsonParseException.class,
+        Throwable exception = assertThrows(Exception.class,
                 () -> defaultConsumerService.consumeService(messageRequestString));
-        assertNotNull(exception.getMessage());
+        assertNotNull(exception);
     }
 
     private String buildMessageRequestStringForSucessResponse() {

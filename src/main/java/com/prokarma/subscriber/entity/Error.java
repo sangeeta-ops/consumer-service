@@ -11,7 +11,7 @@ import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 
 @Entity(name = "ERROR_LOG")
 @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
-public class ErrorEntity {
+public class Error {
 
     @Id
     @GeneratedValue(generator = "uuid")

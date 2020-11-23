@@ -11,7 +11,7 @@ import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 
 @Entity(name = "AUDIT_LOG")
 @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
-public class AuditEntity {
+public class Audit {
 
     @Id
     @GeneratedValue(generator = "uuid")

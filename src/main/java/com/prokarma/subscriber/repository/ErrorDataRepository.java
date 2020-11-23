@@ -1,8 +1,8 @@
 package com.prokarma.subscriber.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import com.prokarma.subscriber.entity.ErrorEntity;
+import com.prokarma.subscriber.entity.Error;
 
-public interface ErrorDataRepository extends CrudRepository<ErrorEntity, String> {
+public interface ErrorDataRepository extends CrudRepository<Error, String> {
 
 }

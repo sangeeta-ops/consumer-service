@@ -12,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import com.fasterxml.jackson.core.JsonParseException;
 
 @Tag("integration")
 @SpringBootTest
@@ -41,9 +40,9 @@ public class DefaultConsumerIntegrationTest {
     @Test
     void testConsumeServiceWithErrorResponse() throws Exception {
         String messageRequestString = buildMessageRequestStringForErrorResponse();
-        Throwable exception = assertThrows(JsonParseException.class,
+        Throwable exception = assertThrows(Exception.class,
                 () -> consumerService.consumeService(messageRequestString));
-        assertNotNull(exception.getMessage());
+        assertNotNull(exception);
     }
 
     private String buildMessageRequestStringForSucessResponse() {

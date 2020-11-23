@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.prokarma.subscriber.exception.ConsumerServiceException;
 import com.prokarma.subscriber.model.MessageRequest;
 
 public class ObjectMapperUtil {
@@ -15,14 +16,14 @@ public class ObjectMapperUtil {
         throw new AssertionError("No Object Creation");
     }
 
-    public static MessageRequest returnObjectFromJsonString(String messageRequestString)
-            throws Exception {
+    public static MessageRequest returnObjectFromJsonString(String messageRequestString) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.registerModule(new JavaTimeModule());
             return objectMapper.readValue(messageRequestString, MessageRequest.class);
         } catch (JsonProcessingException ex) {
-            throw new Exception();
+            throw new ConsumerServiceException(
+                    "Failed in the Parsing with exception" + ex.getMessage());
         }
     }
 }

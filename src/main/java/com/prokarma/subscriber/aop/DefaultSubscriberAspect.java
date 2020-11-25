@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.prokarma.subscriber.entity.Error;
+import com.prokarma.subscriber.model.ErrorResponse;
 import com.prokarma.subscriber.repository.ErrorDataRepository;
 
 @Aspect
@@ -24,8 +25,8 @@ public class DefaultSubscriberAspect {
     public void logError(Exception ex, String messageRequestString) {
         Error errorEntity = buildErrorEntity(messageRequestString, ex);
         errorDataRepository.save(errorEntity);
-        logger.info("Error occure in consume service and messageRequest : {} ",
-                messageRequestString);
+        ErrorResponse errorResponse = buildErrorResponse(messageRequestString, ex);
+        logger.error("ErrorResponse :{}", errorResponse);
     }
 
     private Error buildErrorEntity(String messageRequestString, Exception e) {
@@ -34,6 +35,15 @@ public class DefaultSubscriberAspect {
         errorEntity.setErrorDescription(e.getMessage());
         errorEntity.setErrorType(e.getClass().getName());
         return errorEntity;
+    }
+
+    private ErrorResponse buildErrorResponse(String messageRequestString, Exception e) {
+        ErrorResponse errorResponse = new ErrorResponse();
+        errorResponse.setStatus("error");
+        errorResponse.setMessage(e.getMessage());
+        errorResponse.setErrorType(e.getClass().getName());
+        logger.error("ErrorResponse :{}", errorResponse);
+        return errorResponse;
     }
 
 }

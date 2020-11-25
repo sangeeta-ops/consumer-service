@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.prokarma.subscriber.converter.DefaultMessageRequestMaskConverter;
 import com.prokarma.subscriber.entity.Audit;
 import com.prokarma.subscriber.model.MessageRequest;
+import com.prokarma.subscriber.model.MessageResponse;
 import com.prokarma.subscriber.repository.AuditDataRepository;
 import com.prokarma.subscriber.util.ObjectMapperUtil;
 
@@ -31,17 +32,24 @@ public class DefaultConsumerService implements ConsumerService {
         logger.info("Started to consume messageRequest : {} ", maskMessageRequest);
         Audit auditEntity = buildAuditEntity(messageRequestString, messageRequest);
         auditDataRepository.save(auditEntity);
-        logger.info("Finished to consume messageRequest : {} ", maskMessageRequest);
+        MessageResponse response = buildMessageResponse();
+        logger.info("Finished to consume message : {} ", response);
 
     }
 
 
-    private Audit buildAuditEntity(String messageRequestString,
-            MessageRequest messageRequest) {
+    private Audit buildAuditEntity(String messageRequestString, MessageRequest messageRequest) {
         Audit auditEntity = new Audit();
         auditEntity.setCustomerNumber(messageRequest.getCustomerNumber());
         auditEntity.setPayload(messageRequestString);
         return auditEntity;
+    }
+
+    private MessageResponse buildMessageResponse() {
+        MessageResponse response = new MessageResponse();
+        response.setData("Published Message sucessfully");
+        response.setStatus("success");
+        return response;
     }
 
 

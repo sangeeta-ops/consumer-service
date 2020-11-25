@@ -32,11 +32,11 @@ public class DefaultConsumerService implements ConsumerService {
         MessageRequest maskMessageRequest = messageRequestConverter.convert(messageRequest);
         UUID uuid = UUID.randomUUID();
         logger.info("Started to consume messageRequest : {} and UUID:{} ", maskMessageRequest,
-                uuid);
+                uuid.toString());
         Audit auditEntity = buildAuditEntity(messageRequestString, messageRequest);
         auditDataRepository.save(auditEntity);
         MessageResponse response = buildMessageResponse();
-        logger.info("Finished to consume message : {} and UUID:{} ", response, uuid);
+        logger.info("Finished to consume message : {} and UUID:{} ", response, uuid.toString());
 
     }
 

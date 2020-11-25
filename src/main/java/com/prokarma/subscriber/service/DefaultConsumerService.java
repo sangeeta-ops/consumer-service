@@ -47,7 +47,7 @@ public class DefaultConsumerService implements ConsumerService {
 
     private MessageResponse buildMessageResponse() {
         MessageResponse response = new MessageResponse();
-        response.setData("Published Message sucessfully");
+        response.setData("Consumed Message sucessfully");
         response.setStatus("success");
         return response;
     }

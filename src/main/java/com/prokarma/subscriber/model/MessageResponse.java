@@ -9,7 +9,7 @@ import java.util.Objects;
 public class MessageResponse {
     private String status = null;
 
-    private String data = null;
+    private String message = null;
 
     public MessageResponse status(String status) {
         this.status = status;
@@ -31,7 +31,7 @@ public class MessageResponse {
     }
 
     public MessageResponse data(String data) {
-        this.data = data;
+        this.message = data;
         return this;
     }
 
@@ -42,11 +42,11 @@ public class MessageResponse {
      **/
 
     public String getData() {
-        return data;
+        return message;
     }
 
     public void setData(String data) {
-        this.data = data;
+        this.message = data;
     }
 
 
@@ -60,12 +60,12 @@ public class MessageResponse {
         }
         MessageResponse messageResponse = (MessageResponse) o;
         return Objects.equals(this.status, messageResponse.status)
-                && Objects.equals(this.data, messageResponse.data);
+                && Objects.equals(this.message, messageResponse.message);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(status, data);
+        return Objects.hash(status, message);
     }
 
     @Override
@@ -74,7 +74,7 @@ public class MessageResponse {
         sb.append("class MessageResponse {\n");
 
         sb.append("    status: ").append(toIndentedString(status)).append("\n");
-        sb.append("    data: ").append(toIndentedString(data)).append("\n");
+        sb.append("    data: ").append(toIndentedString(message)).append("\n");
         sb.append("}");
         return sb.toString();
     }

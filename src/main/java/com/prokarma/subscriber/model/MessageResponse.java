@@ -74,7 +74,7 @@ public class MessageResponse {
         sb.append("class MessageResponse {\n");
 
         sb.append("    status: ").append(toIndentedString(status)).append("\n");
-        sb.append("    data: ").append(toIndentedString(message)).append("\n");
+        sb.append("    message: ").append(toIndentedString(message)).append("\n");
         sb.append("}");
         return sb.toString();
     }

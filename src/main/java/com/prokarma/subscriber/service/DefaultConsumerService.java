@@ -1,5 +1,6 @@
 package com.prokarma.subscriber.service;
 
+import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +30,13 @@ public class DefaultConsumerService implements ConsumerService {
         MessageRequest messageRequest =
                 ObjectMapperUtil.returnObjectFromJsonString(messageRequestString);
         MessageRequest maskMessageRequest = messageRequestConverter.convert(messageRequest);
-        logger.info("Started to consume messageRequest : {} ", maskMessageRequest);
+        UUID uuid = UUID.randomUUID();
+        logger.info("Started to consume messageRequest : {} and UUID:{} ", maskMessageRequest,
+                uuid);
         Audit auditEntity = buildAuditEntity(messageRequestString, messageRequest);
         auditDataRepository.save(auditEntity);
         MessageResponse response = buildMessageResponse();
-        logger.info("Finished to consume message : {} ", response);
+        logger.info("Finished to consume message : {} and UUID:{} ", response, uuid);
 
     }
 
